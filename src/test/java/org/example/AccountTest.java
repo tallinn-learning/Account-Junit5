@@ -7,8 +7,6 @@ import org.junit.jupiter.api.*;
  */
 public class AccountTest {
 
-    Account account;
-
     @BeforeAll
     public static void init(){
         System.out.println("BeforeAll init() method called");
@@ -18,7 +16,6 @@ public class AccountTest {
     public void initEach(){
         //test setup code
         System.out.println("BeforeEach initEach() method called");
-        account = new Account();
     }
 
     @AfterEach
@@ -34,6 +31,7 @@ public class AccountTest {
 
     @Test
     public void testPositiveDeposit() {
+        Account account = new Account();
         account.setBalance(1);
         account.depositBalance(3, account);
         Assertions.assertEquals( 4, account.getBalance() );
@@ -42,6 +40,7 @@ public class AccountTest {
     @Test
     public void testNegativeDeposit() {
         int initialBalance = 1;
+        Account account = new Account();
         account.setBalance(initialBalance);
         account.depositBalance(-3, account);
         Assertions.assertEquals( initialBalance, account.getBalance() );
@@ -49,6 +48,7 @@ public class AccountTest {
 
     @Test
     public void testNegativeWithdrawal()  {
+        Account account = new Account();
         account.setBalance(4);
         account.withdrawalBalance(3, account);
         Assertions.assertEquals(1, account.getBalance());
@@ -57,6 +57,7 @@ public class AccountTest {
     @Test
     public void testNameNull()
     {
+        Account account = new Account();
         Assertions.assertNull(account.getName());
     }
 
@@ -64,6 +65,7 @@ public class AccountTest {
     public void testNameNotNull()
     {
         System.out.println("not null test");
+        Account account = new Account();
         account.setName("Nick");
         Assertions.assertNotNull( account.getName() );
     }
